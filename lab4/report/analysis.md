@@ -17,7 +17,7 @@ SELECT 'groups' AS table_name, COUNT(*) AS rows_count FROM groups UNION ALL SELE
 
 **Результат:**
 
-![Шаг 1 — количество записей](images/step01_counts.png)
+![Шаг 1 — количество записей](../images/step01_counts.png)
 
 **Вывод:** все шесть таблиц доступны, всего 2 147 записей.
 
@@ -44,7 +44,7 @@ SELECT * FROM rentals LIMIT 5;
 
 **Результат:**
 
-![Шаг 2 — просмотр данных](images/step02_preview.png)
+![Шаг 2 — просмотр данных](../images/step02_preview.png)
 
 **Структура таблицы.** Просмотр полей и типов данных таблицы `enrollments`.
 
@@ -54,7 +54,7 @@ PRAGMA table_info(enrollments);
 
 **Результат:**
 
-![Шаг 2 — структура таблицы](images/step02_schema.png)
+![Шаг 2 — структура таблицы](../images/step02_schema.png)
 
 **Первичные и внешние ключи. Связи между таблицами**
 
@@ -95,7 +95,7 @@ SELECT id, enrollment_id, score, completed_at FROM results WHERE score >= 90 ORD
 
 **Результат:**
 
-![Шаг 3 — фильтрация по баллу](images/step03_filter.png)
+![Шаг 3 — фильтрация по баллу](../images/step03_filter.png)
 
 **Сортировка студентов.** Выводим студентов из группы ИВТ-11 по алфавиту.
 
@@ -105,7 +105,7 @@ SELECT id, full_name, group_id, admission_year FROM students WHERE group_id = '1
 
 **Результат:**
 
-![Шаг 3 — сортировка студентов](images/step03_sort.png)
+![Шаг 3 — сортировка студентов](../images/step03_sort.png)
 
 **Вывод:** `WHERE` отбирает нужные строки, `ORDER BY` сортирует, `LIMIT` ограничивает объём вывода.
 
@@ -119,7 +119,7 @@ SELECT COUNT(*) AS status FROM enrollments WHERE status = 'completed';
 
 **Результат:**
 
-![Шаг 4 — Подсчёт окончаний курсов](images/step04_count.png)
+![Шаг 4 — Подсчёт окончаний курсов](../images/step04_count.png)
 
 **Агрегатные функции.** Рассчитываем минимальный, максимальный, средний и суммарный балл.
 
@@ -129,7 +129,7 @@ SELECT MIN(score) AS min_score, MAX(score) AS max_score, ROUND(AVG(score),2) AS 
 
 **Результат:**
 
-![Шаг 4 — агрегатные функции](images/step04_aggregates.png)
+![Шаг 4 — агрегатные функции](../images/step04_aggregates.png)
 
 **GROUP BY и HAVING.** Группируем курсы по статусу и оставляем статусы, встречающиеся более 40 раз.
 
@@ -139,7 +139,7 @@ SELECT status, COUNT(*) AS enrollments_count FROM enrollments GROUP BY status HA
 
 **Результат:**
 
-![Шаг 4 — GROUP BY и HAVING](images/step04_having.png)
+![Шаг 4 — GROUP BY и HAVING](../images/step04_having.png)
 
 **Вывод:** в базе 1000 статусов курсов. `HAVING` отбирает группы после агрегирования; условие применяется к `COUNT(*)`.
 
@@ -153,7 +153,7 @@ SELECT r.id AS student_id, c.group_name, r.full_name, r.group_id FROM students r
 
 **Результат:**
 
-![Шаг 5 — студенты и группы](images/step05_join_students.png)
+![Шаг 5 — студенты и группы](../images/step05_join_students.png)
 
 ## Шаг 6. Проверка корректности данных
 
@@ -165,7 +165,7 @@ SELECT COUNT(*) AS invalid_score FROM results WHERE score < 0;
 
 **Результат:**
 
-![Шаг 6 — проверка колличества баллов](images/step06_invalid.png)
+![Шаг 6 — проверка колличества баллов](../images/step06_invalid.png)
 
 **Проверка связей оценок.** Проверяем, нет ли оценок, относящихся к несуществующим студентам.
 
@@ -175,7 +175,7 @@ SELECT COUNT(*) AS orphan_score FROM results p LEFT JOIN enrollments r ON p.enro
 
 **Результат:**
 
-![Шаг 6 — проверка связей оценок](images/step06_orphans.png)
+![Шаг 6 — проверка связей оценок](../images/step06_orphans.png)
 
 **Вывод:** оба запроса вернули 0. В рамках проведённых проверок нарушений не обнаружено.
 ## Шаг 7. Индивидуальное аналитическое исследование
@@ -201,7 +201,7 @@ ORDER BY avg_score DESC
 LIMIT 5
 **Результат:**
 
-![Шаг 7 — решение](images/step07.png)
+![Шаг 7 — решение](../images/step07.png)
 
 **Аналитические выводы:**
 
